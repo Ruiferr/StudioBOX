@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -95,8 +96,7 @@ public class SearchFragment extends BaseFragment{
             @Override
             protected void onNetworkError() {
                 DLog.d(tag, "onNetworkError ");
-                // Some error occur when processing the request,
-                // It is Possible that the internet connection turned off
+                Toast.makeText(getActivity(), "There is no internet connection!",Toast.LENGTH_LONG).show();
             }
         }.execute();
     }

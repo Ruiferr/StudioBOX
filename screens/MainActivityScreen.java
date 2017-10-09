@@ -9,13 +9,12 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import movies.flag.pt.moviesapp.R;
 import movies.flag.pt.moviesapp.fragments.BaseFragment;
+import movies.flag.pt.moviesapp.fragments.HomeFragment;
 import movies.flag.pt.moviesapp.fragments.MoviesFragment;
 import movies.flag.pt.moviesapp.fragments.SearchFragment;
 import movies.flag.pt.moviesapp.fragments.SeriesFragment;
@@ -26,16 +25,12 @@ public class MainActivityScreen extends Screen {
     private static final int FRAGMENT_CONTAINER_ID = R.id.main_fragment_container;
 
     private DrawerLayout drawerLayout;
-    private FrameLayout frameLayout;
     private TextView homeOption;
     private TextView moviesOption;
     private TextView seriesOption;
     private EditText searchOption;
     private ImageButton searchArrow;
     private TextView toolbar;
-    private TextView welcomeTitle;
-    private TextView welcomeResume;
-    private ImageView welcomeImage;
 
 
     @Override
@@ -49,17 +44,12 @@ public class MainActivityScreen extends Screen {
 
     private void findViews() {
         drawerLayout = (DrawerLayout) findViewById(R.id.main_activity_fragment);
-        frameLayout = (FrameLayout) findViewById(R.id.main_fragment_container);
         homeOption = (TextView) findViewById(R.id.main_home_txt);
         moviesOption = (TextView) findViewById(R.id.main_movies_txt);
         seriesOption = (TextView) findViewById(R.id.main_series_txt);
         searchOption = (EditText) findViewById(R.id.main_search_txt);
         searchArrow = (ImageButton) findViewById(R.id.main_search_arrow);
         toolbar = (TextView) findViewById(R.id.main_menu_toolbar);
-        welcomeTitle = (TextView) findViewById(R.id.main_activity_fragment_welcome);
-        welcomeResume = (TextView) findViewById(R.id.main_activity_fragment_summary);
-        welcomeImage = (ImageView) findViewById(R.id.main_activity_fragment_image);
-
     }
 
     private void addListeners() {
@@ -67,7 +57,7 @@ public class MainActivityScreen extends Screen {
         homeOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                frameLayout.removeAllViews();
+                addFragment(HomeFragment.newInstance());
                 closeMenu();
             }
         });
@@ -75,9 +65,6 @@ public class MainActivityScreen extends Screen {
         moviesOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                welcomeTitle.setVisibility(View.INVISIBLE);
-                welcomeResume.setVisibility(View.INVISIBLE);
-                welcomeImage.setVisibility(View.INVISIBLE);
                 addFragment(MoviesFragment.newInstance());
                 closeMenu();
             }
@@ -86,9 +73,6 @@ public class MainActivityScreen extends Screen {
         seriesOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                welcomeTitle.setVisibility(View.INVISIBLE);
-                welcomeResume.setVisibility(View.INVISIBLE);
-                welcomeImage.setVisibility(View.INVISIBLE);
                 addFragment(SeriesFragment.newInstance());
                 closeMenu();
             }
@@ -98,9 +82,6 @@ public class MainActivityScreen extends Screen {
 
             @Override
             public void onClick(View v) {
-                welcomeTitle.setVisibility(View.INVISIBLE);
-                welcomeResume.setVisibility(View.INVISIBLE);
-                welcomeImage.setVisibility(View.INVISIBLE);
                 String text = searchOption.getText().toString();
                 addFragment(SearchFragment.newInstance(text));
                 closeMenu();

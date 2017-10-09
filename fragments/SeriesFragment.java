@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -82,8 +83,7 @@ public class SeriesFragment extends BaseFragment{
             @Override
             protected void onNetworkError() {
                 DLog.d(tag, "onNetworkError ");
-                // Here i now that some error occur when processing the request,
-                // possible my internet connection if turned off
+                Toast.makeText(getActivity(), "There is no internet connection!",Toast.LENGTH_LONG).show();
             }
         }.execute();
     }

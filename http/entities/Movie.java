@@ -52,6 +52,22 @@ public class Movie {
     @Expose
     private Double voteAverage;
 
+
+
+
+    // SAVED MOVIE CONSTRUCTOR
+
+    public Movie(int id, String title, String overview, String releaseDate, String img, Double vote){
+        this.id = id;
+        this.title = title;
+        this.overview = overview;
+        this.releaseDate = releaseDate;
+        this.posterPath = img;
+        this.voteAverage = vote;
+    }
+
+
+
     /**
      * 
      * @return
@@ -303,5 +319,7 @@ public class Movie {
     public void setVoteAverage(Double voteAverage) {
         this.voteAverage = voteAverage;
     }
+
+
 
 }

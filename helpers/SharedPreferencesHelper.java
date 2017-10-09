@@ -23,24 +23,9 @@ public final class SharedPreferencesHelper {
         return sharedPreferences;
     }
 
-    public static void savePreference(String key, boolean value){
-        Log.d(TAG, String.format("savePreference key = %s value = %s", key, value));
+    public static void savePreference(String key, Long value){
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean(key, value);
-        editor.commit();
-    }
-
-    public static void savePreference(String key, int value){
-        Log.d(TAG, String.format("savePreference key = %s value = %s", key, value));
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt(key, value);
-        editor.commit();
-    }
-
-    public static void savePreference(String key, String value){
-        Log.d(TAG, String.format("savePreference key = %s value = %s", key, value));
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(key, value);
+        editor.putLong(key,value);
         editor.commit();
     }
 
@@ -58,4 +43,5 @@ public final class SharedPreferencesHelper {
     public static int getIntPreference(String key, int defaultValue){
         return sharedPreferences.getInt(key, defaultValue);
     }
+
 }
